@@ -1,14 +1,15 @@
 import React from 'react';
-import {ApplicationStackParamList} from '../types/navigation';
+import {ApplicationStackParamList} from '@_types/navigation';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Home from '../screens/Home/Home';
+
+import Screens from '@screens/index';
 
 export default function RootStack() {
   const Stack = createNativeStackNavigator<ApplicationStackParamList>();
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Home" component={Screens.Home} />
     </Stack.Navigator>
   );
 }
