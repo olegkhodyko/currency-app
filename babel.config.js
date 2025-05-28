@@ -14,6 +14,7 @@ module.exports = {
           '@assets': './src/assets',
           '@hooks': './src/hooks',
           '@constants': './src/constants',
+          '@theme': './src/theme',
         },
       },
     ],

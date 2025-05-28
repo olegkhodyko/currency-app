@@ -3,14 +3,32 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@screens/*": ["screens/*"],
-      "@navigation/*": ["navigation/*"],
-      "@utils/*": ["utils/*"],
-      "@_types/*": ["types/*"],
+      "@assets": ["assets/index.ts"],
       "@assets/*": ["assets/*"],
+
+      "@components": ["components/index.ts"],
+      "@components/*": ["components/*"],
+
+      "@constants": ["constants/index.ts"],
       "@constants/*": ["constants/*"],
-      "@hooks/*": ["hooks/*"]
+
+      "@hooks": ["hooks/index.ts"],
+      "@hooks/*": ["hooks/*"],
+
+      "@navigation": ["navigation/index.ts"],
+      "@navigation/*": ["navigation/*"],
+
+      "@screens": ["screens/index.ts"],
+      "@screens/*": ["screens/*"],
+
+      "@theme": ["theme/index.ts"],
+      "@theme/*": ["theme/*"],
+
+      "@utils": ["utils/index.ts"],
+      "@utils/*": ["utils/*"],
+
+      "@_types": ["types/index.ts"],
+      "@_types/*": ["types/*"]
     }
   }
 }

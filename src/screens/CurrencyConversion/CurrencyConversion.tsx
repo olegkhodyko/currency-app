@@ -7,8 +7,6 @@ export default function CurrencyConversion() {
   return (
     <Layout.ScreenContainer testID={testID}>
       <Ui.Text variant="extraLarge">Hello bro</Ui.Text>
-      <Ui.Text variant="large">Hello bro</Ui.Text>
-      <Ui.Text variant="medium">Hello bro</Ui.Text>
     </Layout.ScreenContainer>
   );
 }

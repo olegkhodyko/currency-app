@@ -1,32 +1,34 @@
-import { FONT_SIZES, COLORS } from '@constants/styles';
+import { COLORS, FONTS } from '@theme';
+import { PropsWithChildren } from 'react';
 import { StyleProp, TextProps, TextStyle } from 'react-native';
 
-export interface TextComponentProps extends Omit<TextProps, 'style'> {
+export interface TextComponentProps
+  extends Omit<PropsWithChildren<TextProps>, 'style'> {
   variant?: TextStyleVariant;
   color?: ColorType;
   style?: StyleProp<TextStyle>;
 }
 
 type TextStyleVariant = keyof typeof TEXT_STYLES;
-type ColorType = keyof typeof COLORS;
+export type ColorType = keyof typeof COLORS;
 
 export const TEXT_STYLES = {
   medium: {
-    fontSize: FONT_SIZES.medium,
+    fontSize: FONTS.SIZE.medium,
+    lineHeight: FONTS.SIZE.medium * 1.4,
+    fontWeight: FONTS.WEIGHT.regular,
     fontFamily: 'Roboto-Regular',
-    lineHeight: FONT_SIZES.medium * 1.2,
-    fontWeight: 400,
   },
   extraLarge: {
-    fontSize: FONT_SIZES.extraLarge,
+    fontSize: FONTS.SIZE.extraLarge,
+    lineHeight: FONTS.SIZE.extraLarge * 1.4,
+    fontWeight: FONTS.WEIGHT.bold,
     fontFamily: 'Roboto-Regular',
-    lineHeight: FONT_SIZES.extraLarge * 1.2,
-    fontWeight: 400,
   },
   large: {
-    fontSize: FONT_SIZES.large,
+    fontSize: FONTS.SIZE.large,
+    lineHeight: FONTS.SIZE.large * 1.4,
+    fontWeight: FONTS.WEIGHT.bold,
     fontFamily: 'Roboto-Bold',
-    lineHeight: FONT_SIZES.large * 1.2,
-    fontWeight: 700,
   },
 } as const;
