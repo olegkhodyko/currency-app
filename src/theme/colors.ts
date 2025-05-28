@@ -1,6 +1,6 @@
 const COLORS = {
   text: '#000000',
-  textSecondary: '#666666',
+  textSecondary: '#DEDEDE',
   primary: '#3366FF',
   error: '#FF3333',
   background: '#FFFFFF',

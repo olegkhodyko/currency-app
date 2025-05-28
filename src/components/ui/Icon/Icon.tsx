@@ -1,28 +1,15 @@
-import React, { FC } from 'react';
-import { View } from 'react-native';
-import { createIconSetFromIcoMoon } from 'react-native-vector-icons';
+import createIconSet from '@react-native-vector-icons/icomoon';
+import icoMoonConfig from '@assets/icomoon/selection.json';
+import { IconProps } from '@_types/props/icons';
+import { COLORS } from '@theme';
 
-import IcomoonConfig from '@/assets/icomoon/selection.json';
+const IcoMoon = createIconSet(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 
-export interface IIconProps {
-  name: string;
-  testID: string;
-  color?: string;
-  size?: number;
+export default function Icon({
+  type,
+  testID,
+  color = COLORS.text,
+  size = 12,
+}: IconProps) {
+  return <IcoMoon testID={testID} name={type} size={size} color={color} />;
 }
-
-const Icomoon = createIconSetFromIcoMoon(
-  IcomoonConfig,
-  'icomoon',
-  'icomoon.ttf',
-);
-
-const Icon: FC<IIconProps> = ({ name, testID, color = 'black', size = 10 }) => {
-  return (
-    <View testID={testID}>
-      <Icomoon name={name} color={color} size={size} />
-    </View>
-  );
-};
-
-export default Icon;

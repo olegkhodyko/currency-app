@@ -1,12 +1,12 @@
 import React from 'react';
-import { Ui, Layout } from '@components/index';
+import { Layout, Modules } from '@components';
 
 export default function CurrencyConversion() {
   const testID = 'currency-conversion-screen';
 
   return (
     <Layout.ScreenContainer testID={testID}>
-      <Ui.Text variant="extraLarge">Hello bro</Ui.Text>
+      <Modules.FromTo testID={`${testID}-from_to`} />
     </Layout.ScreenContainer>
   );
 }
