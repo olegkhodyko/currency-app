@@ -1,11 +1,9 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 import { View, ViewProps, ViewStyle, StyleProp } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-interface Props extends ViewProps {
+interface Props extends PropsWithChildren<ViewProps> {
   testID: string;
-  children: ReactNode;
-
 }
 
 const ScreenContainer: FC<Props> = ({ testID, children, style, ...rest }) => {
@@ -18,6 +16,7 @@ const ScreenContainer: FC<Props> = ({ testID, children, style, ...rest }) => {
       paddingRight: insets.right,
       paddingBottom: insets.bottom,
       paddingLeft: insets.left,
+      overflow: 'hidden',
     },
     style,
   ];

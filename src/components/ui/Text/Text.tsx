@@ -1,30 +1,18 @@
-import React, { FC, ReactNode } from 'react';
-import { Text as RNText, TextProps, StyleSheet } from 'react-native';
+import React, { FC } from 'react';
+import { Text as RNText } from 'react-native';
+import { TEXT_STYLES, TextComponentProps } from '@_types/props/text';
 
-type FontWeight = 'regular' | 'bold';
-
-interface Props extends TextProps {
-  children: ReactNode;
-  weight?: FontWeight;
-  size?: number;
-  color?: string;
-}
-
-const Text: FC<Props> = ({
+export const Text: FC<TextComponentProps> = ({
+  variant = 'medium',
+  color = 'text',
   children,
-  weight = 'regular',
-  size = 16,
-  color = '#000',
   style,
-  ...rest
+  ...props
 }) => {
-  const fontFamily = {
-    regular: 'Roboto-Regular',
-    bold: 'Roboto-Bold',
-  }[weight];
-
   return (
-    <RNText style={[{ fontFamily, fontSize: size, color }, style]} {...rest}>
+    <RNText
+      style={[TEXT_STYLES[variant], color ? { color } : {}, style]}
+      {...props}>
       {children}
     </RNText>
   );
