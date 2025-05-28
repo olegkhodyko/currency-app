@@ -1,19 +1,25 @@
 import React from 'react';
-import {StatusBar, StyleSheet, useColorScheme, View} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import RootStack from './src/navigation';
-import {NavigationContainer} from '@react-navigation/native';
-// import {enableScreens} from 'react-native-screens';
-// enableScreens();
+import {
+  StatusBar,
+  StyleProp,
+  useColorScheme,
+  View,
+  ViewStyle,
+} from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import RootStack from '@navigation/index';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App(): React.JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const backgroundStyle = {
+  const backgroundStyle: StyleProp<ViewStyle> = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    flex: 1,
   };
+
   return (
-    <View style={[backgroundStyle, styles.container]}>
+    <View style={backgroundStyle}>
       <NavigationContainer>
         <StatusBar
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
@@ -24,9 +30,3 @@ export default function App(): React.JSX.Element {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

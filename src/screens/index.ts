@@ -1,5 +1,4 @@
-import Home from './Home/Home';
+import CurrencyConversion from './CurrencyConversion/CurrencyConversion';
+import CurrencySelect from './CurrencySelect/CurrencySelect';
 
-export default {
-  Home,
-};
+export default { CurrencyConversion, CurrencySelect };
