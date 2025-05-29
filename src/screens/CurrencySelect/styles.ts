@@ -3,12 +3,9 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
+    flex: 1,
     paddingHorizontal: 20,
     gap: 24,
-  },
-  listWrapper: {
-    borderRadius: 8,
-    backgroundColor: COLORS.backgroundSecondary,
   },
   item: {
     flexDirection: 'row',
@@ -27,8 +24,16 @@ export default StyleSheet.create({
   },
   containerWrapper: {
     gap: 8,
+    backgroundColor: COLORS.backgroundSecondary,
+    borderRadius: 8,
   },
   active: {
     backgroundColor: COLORS.backgroundActive,
+  },
+  emptyListWrapper: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

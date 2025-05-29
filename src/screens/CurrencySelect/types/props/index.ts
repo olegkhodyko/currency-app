@@ -17,3 +17,7 @@ export interface CurrencySearchProps {
   searchValue: string;
   setSearchValue: (v: string) => void;
 }
+
+export interface CurrencyNoResultsProps {
+  testID: string;
+}
