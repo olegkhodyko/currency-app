@@ -32,6 +32,7 @@ const CurrencyList: FC<CurrencyListProps> = ({
       data={currencies}
       renderItem={renderItem}
       keyExtractor={({ id }) => id.toString()}
+      style={styles.listWrapper}
       contentContainerStyle={[styles.containerWrapper]}
       showsVerticalScrollIndicator={false}
     />

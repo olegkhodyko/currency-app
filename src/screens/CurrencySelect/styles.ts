@@ -22,6 +22,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     gap: 12,
   },
+  listWrapper: {
+    borderRadius: 8,
+  },
   containerWrapper: {
     gap: 8,
     backgroundColor: COLORS.backgroundSecondary,
