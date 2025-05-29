@@ -5,7 +5,8 @@ import { TouchableOpacity, View } from 'react-native';
 import { FromToProps } from '@screens/CurrencyConversion/types';
 import { useNavigation } from '@react-navigation/native';
 import { AppNavigationProps } from '@_types/navigation';
-import { useCurrencyStore, currency } from '@store/currencyStore';
+import { useCurrencyStore, currencies } from '@store/currencyStore';
+import { CurrencySelectType, CurrencyType } from '@_types/props/currency';
 
 import styles from './styles';
 
@@ -15,18 +16,33 @@ const FromTo: FC<FromToProps> = ({ testID }) => {
   const fromCurrency = useCurrencyStore(state => state.fromCurrency);
   const toCurrency = useCurrencyStore(state => state.toCurrency);
   const switchCurrencies = useCurrencyStore(state => state.switchCurrencies);
+  const setActiveId = useCurrencyStore(state => state.setActiveId);
 
-  const selectCurrency = useCallback(() => {
-    navigate('CurrencySelect', { currencies: currency });
-  }, [navigate]);
+  const selectCurrency = useCallback(
+    (type: CurrencySelectType, id: CurrencyType['id']) => {
+      navigate('CurrencySelect', { currencies, type });
+      setActiveId(id);
+    },
+    [navigate, setActiveId],
+  );
+
+  const selectFromCurrency = useCallback(
+    () => selectCurrency('from', fromCurrency.id),
+    [selectCurrency, fromCurrency.id],
+  );
+
+  const selectToCurrency = useCallback(
+    () => selectCurrency('to', toCurrency.id),
+    [selectCurrency, toCurrency.id],
+  );
 
   return (
     <View testID={testID} style={styles.container}>
       <CurrencySelect
         testID={`${testID}-from`}
         title="From"
-        data={fromCurrency}
-        selectCurrency={selectCurrency}
+        currency={fromCurrency}
+        selectCurrency={selectFromCurrency}
       />
 
       <TouchableOpacity
@@ -39,8 +55,8 @@ const FromTo: FC<FromToProps> = ({ testID }) => {
       <CurrencySelect
         testID={`${testID}-to`}
         title="To"
-        data={toCurrency}
-        selectCurrency={selectCurrency}
+        currency={toCurrency}
+        selectCurrency={selectToCurrency}
       />
     </View>
   );

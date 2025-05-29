@@ -10,19 +10,17 @@ import styles from '../styles';
 const CurrencyList: FC<CurrencyListProps> = ({
   testID,
   currencies,
-  activeId,
-  selectCurrency,
+  onSelect,
 }) => {
   const renderItem = useCallback(
     ({ item }: { item: CurrencyType }) => (
       <CurrencyItem
         testID={`${testID}-${item.code}`}
         item={item}
-        isActive={item.id === activeId}
-        onSelect={selectCurrency}
+        onSelect={onSelect}
       />
     ),
-    [activeId, selectCurrency, testID],
+    [onSelect, testID],
   );
 
   return (

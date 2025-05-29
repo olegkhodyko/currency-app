@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { CurrencyType } from '@_types/props/currency';
+import { CurrencyState, CurrencyType } from '@_types/props/currency';
 import { CurrencyArraySchema } from '@utils/validators/currency';
 import rawData from '@assets/data/currencies.json';
 
@@ -11,24 +11,31 @@ if (!result.success) {
   throw new Error('Invalid currency data: ' + result.error.message);
 }
 
-export const currency: CurrencyType[] = result.data;
+export const currencies: CurrencyType[] = result.data;
 
-interface CurrencyState {
-  fromCurrency: CurrencyType;
-  toCurrency: CurrencyType;
-  setFromCurrency: (currency: CurrencyType) => void;
-  setToCurrency: (currency: CurrencyType) => void;
-  switchCurrencies: () => void;
-}
+export const useCurrencyStore = create<CurrencyState>(
+  (set, get): CurrencyState => ({
+    activeId: -1,
+    fromCurrency: currencies[0],
+    toCurrency: currencies[1],
 
-export const useCurrencyStore = create<CurrencyState>((set, get) => ({
-  fromCurrency: currency[0],
-  toCurrency: currency[1],
-  setFromCurrency: (_currency: CurrencyType) =>
-    set({ fromCurrency: _currency }),
-  setToCurrency: (_currency: CurrencyType) => set({ toCurrency: _currency }),
-  switchCurrencies: () => {
-    const { fromCurrency, toCurrency } = get();
-    set({ fromCurrency: toCurrency, toCurrency: fromCurrency });
-  },
-}));
+    setActiveId: (id: CurrencyType['id']) => {
+      set({ activeId: id });
+    },
+
+    changeCurrency: (currency, type) => {
+      const newState: Partial<CurrencyState> = {
+        activeId: currency.id,
+        ...(type === 'from'
+          ? { fromCurrency: currency }
+          : { toCurrency: currency }),
+      };
+      set(newState);
+    },
+
+    switchCurrencies: () => {
+      const { fromCurrency, toCurrency } = get();
+      set({ fromCurrency: toCurrency, toCurrency: fromCurrency });
+    },
+  }),
+);

@@ -2,41 +2,50 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { Layout } from '@components';
 import { CurrencyList, CurrencySearch } from './components';
 import { filterCurrencies } from '@screens/CurrencySelect/helpers/filterCurrencies';
-import { useRoute } from '@react-navigation/native';
-import { TypedRoute } from '@_types/navigation';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { AppNavigationProps, TypedRoute } from '@_types/navigation';
+import { useCurrencyStore } from '@store/currencyStore';
+import { CurrencyType } from '@_types/props/currency';
+import { useDebouncedValue } from '@hooks';
 
 import styles from './styles';
 
 export default function CurrencySelectScreen() {
-  const testID = 'currency-select-screen';
-  const [activeId, setActiveId] = useState<number>(-1);
+  const {
+    name,
+    params: { currencies, type },
+  } = useRoute<TypedRoute<'CurrencySelect'>>();
+  const { goBack } = useNavigation<AppNavigationProps>();
+
   const [searchValue, setSearchValue] = useState<string>('');
 
-  const {
-    params: { currencies },
-  } = useRoute<TypedRoute<'CurrencySelect'>>();
+  const changeCurrency = useCurrencyStore(state => state.changeCurrency);
+  const debouncedSearch = useDebouncedValue(searchValue, 300);
 
-  const selectCurrency = useCallback((id: number) => {
-    setActiveId(id);
-  }, []);
+  const filteredCurrencies = useMemo(() => {
+    return filterCurrencies(currencies, debouncedSearch);
+  }, [currencies, debouncedSearch]);
 
-  const filteredCurrency = useMemo(() => {
-    return filterCurrencies(currencies, searchValue);
-  }, [currencies, searchValue]);
+  const onSelect = useCallback(
+    (currency: CurrencyType) => {
+      changeCurrency(currency, type);
+      goBack();
+    },
+    [changeCurrency, goBack, type],
+  );
 
   return (
-    <Layout.ScreenContainer testID={testID} style={styles.container}>
+    <Layout.ScreenContainer testID={name} style={styles.container}>
       <CurrencySearch
-        testID={`${testID}-search`}
+        testID={`${name}-search`}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
 
       <CurrencyList
-        testID={`${testID}-list`}
-        currencies={filteredCurrency}
-        selectCurrency={selectCurrency}
-        activeId={activeId}
+        testID={`${name}-list`}
+        currencies={filteredCurrencies}
+        onSelect={onSelect}
       />
     </Layout.ScreenContainer>
   );

@@ -1,22 +1,19 @@
 import React from 'react';
 import { Layout } from '@components';
 import { FromTo, AmountInput } from '@screens/CurrencyConversion/modules';
+import { TypedRoute } from '@_types/navigation';
+import { useRoute } from '@react-navigation/native';
+
 import styles from './styles';
-import { useCurrencies } from '@hooks';
 
 export default function CurrencyConversion() {
-  const testID = 'currency-conversion-screen';
-  const { currencies } = useCurrencies();
-
-  if (!currencies) {
-    return null;
-  }
+  const { name } = useRoute<TypedRoute<'CurrencyConversion'>>();
 
   return (
-    <Layout.ScreenContainer testID={testID} style={styles.container}>
-      <FromTo testID={`${testID}-from_to`} currencies={currencies} />
+    <Layout.ScreenContainer testID={name} style={styles.container}>
+      <FromTo testID={`${name}-from_to`} />
       <AmountInput
-        testID={`${testID}-amount-input`}
+        testID={`${name}-amount-input`}
         title="Amount"
         autoFocus
         keyboardType="numeric"

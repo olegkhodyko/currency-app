@@ -8,7 +8,7 @@ export interface FromToProps {
 export interface CurrencySelectProps {
   testID: string;
   title: string;
-  data: CurrencyType;
+  currency: CurrencyType;
   selectCurrency: () => void;
 }
 
