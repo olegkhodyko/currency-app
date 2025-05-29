@@ -4,7 +4,7 @@ const COLORS = {
   primary: '#3366FF',
   error: '#FF3333',
   background: '#FFFFFF',
-  border: '#E0E0E0',
+  border: '#000000',
 } as const;
 
 export default COLORS;

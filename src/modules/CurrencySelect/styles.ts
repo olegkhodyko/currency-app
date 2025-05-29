@@ -7,12 +7,11 @@ export default StyleSheet.create({
   },
   content: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: COLORS.textSecondary,
     paddingVertical: 12,
     paddingHorizontal: 16,
-    alignSelf: 'flex-start',
     borderRadius: 8,
     gap: 16,
   },
@@ -21,6 +20,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 8,
+    width: 74,
   },
   image: {
     width: 30,

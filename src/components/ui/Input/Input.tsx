@@ -1,16 +1,11 @@
 import React, { FC } from 'react';
-import { TextInput, TextInputProps, View } from 'react-native';
+import { TextInput } from 'react-native';
 
-interface Props extends TextInputProps {
-  testID: string;
-}
+import styles from './styles';
+import { TextInputProps } from '@_types/props/input';
 
-const Input: FC<Props> = ({ testID, ...rest }) => {
-  return (
-    <View testID={testID}>
-      <TextInput  {...rest} />
-    </View>
-  );
-};
+const Input: FC<TextInputProps> = ({ testID, style, ...rest }) => (
+  <TextInput style={[styles.input, style]} testID={testID} {...rest} />
+);
 
 export default Input;

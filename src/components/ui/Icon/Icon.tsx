@@ -1,5 +1,5 @@
 import createIconSet from '@react-native-vector-icons/icomoon';
-import icoMoonConfig from '@assets/icomoon/selection.json';
+import icoMoonConfig from '@assets/icons/selection.json';
 import { IconProps } from '@_types/props/icons';
 import { COLORS } from '@theme';
 

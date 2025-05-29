@@ -21,6 +21,9 @@
       "@screens": ["screens/index.ts"],
       "@screens/*": ["screens/*"],
 
+      "@modules": ["modules/index.ts"],
+      "@modules/*": ["modules/*"],
+
       "@theme": ["theme/index.ts"],
       "@theme/*": ["theme/*"],
 
