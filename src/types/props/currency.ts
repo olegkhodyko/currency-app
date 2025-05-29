@@ -1,6 +1,7 @@
 export interface CurrencyType {
-  name: string;
+  id: number;
   symbol: string;
+  name: string;
   symbolNative: string;
   decimalDigits: number;
   rounding: number;
@@ -8,9 +9,4 @@ export interface CurrencyType {
   namePlural: string;
   countryCodeISO2: string;
   flagSrc: string;
-}
-
-export interface CountyItemProps
-  extends Pick<CurrencyType, 'code' | 'flagSrc'> {
-  id: number;
 }

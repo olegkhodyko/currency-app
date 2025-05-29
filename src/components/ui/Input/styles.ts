@@ -10,6 +10,6 @@ export default StyleSheet.create({
     paddingVertical: 12,
     borderWidth: 1,
     borderRadius: 8,
-    borderColor: COLORS.border,
+    borderColor: COLORS.borderPrimary,
   },
 });

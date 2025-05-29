@@ -6,7 +6,7 @@ import { COLORS } from '@theme';
 export const Text: FC<TextComponentProps> = ({
   children,
   variant = 'medium',
-  color = 'text',
+  color = 'textPrimary',
   style,
   ...props
 }) => {

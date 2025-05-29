@@ -1,3 +1,4 @@
+import { COLORS } from '@theme';
 import React, { FC, PropsWithChildren } from 'react';
 import { View, ViewProps, ViewStyle, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -15,6 +16,7 @@ const ScreenContainer: FC<Props> = ({ testID, children, style, ...rest }) => {
     paddingBottom: insets.bottom,
     paddingHorizontal: Math.max(insets.left, insets.right),
     overflow: 'hidden',
+    backgroundColor: COLORS.backgroundPrimary,
   };
 
   return (

@@ -1,10 +1,12 @@
 const COLORS = {
-  text: '#000000',
+  textPrimary: '#000000',
   textSecondary: '#DEDEDE',
-  primary: '#3366FF',
   error: '#FF3333',
-  background: '#FFFFFF',
-  border: '#000000',
+  backgroundPrimary: '#F5F5F5',
+  backgroundSecondary: '#E7E7E7',
+  backgroundActive: '#DEDEDE',
+  borderPrimary: '#000000',
+  white: '#FFFFFF',
 } as const;
 
 export default COLORS;

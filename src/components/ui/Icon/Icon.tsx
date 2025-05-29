@@ -8,7 +8,7 @@ const IcoMoon = createIconSet(icoMoonConfig, 'icomoon', 'icomoon.ttf');
 export default function Icon({
   type,
   testID,
-  color = COLORS.text,
+  color = COLORS.textPrimary,
   size = 12,
 }: IconProps) {
   return <IcoMoon testID={testID} name={type} size={size} color={color} />;

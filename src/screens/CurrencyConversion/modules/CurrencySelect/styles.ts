@@ -20,12 +20,6 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     gap: 8,
-    width: 74,
-  },
-  image: {
-    width: 30,
-    height: 20,
-    borderWidth: 1,
-    borderRadius: 4,
+    minWidth: 74,
   },
 });

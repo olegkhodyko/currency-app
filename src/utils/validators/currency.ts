@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 export const CurrencySchema = z.object({
+  id: z.number(),
   name: z.string(),
   symbol: z.string(),
   symbolNative: z.string(),
