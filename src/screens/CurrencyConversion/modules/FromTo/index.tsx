@@ -1,54 +1,45 @@
+import React, { FC, useCallback } from 'react';
 import { Ui } from '@components';
 import { CurrencySelect } from '@screens/CurrencyConversion/modules';
-import React, { FC, useCallback, useEffect, useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { CurrencyType } from '@_types/props/currency';
 import { FromToProps } from '@screens/CurrencyConversion/types';
 import { useNavigation } from '@react-navigation/native';
 import { AppNavigationProps } from '@_types/navigation';
+import { useCurrencyStore, currency } from '@store/currencyStore';
 
 import styles from './styles';
 
-const FromTo: FC<FromToProps> = ({ testID, currencies }) => {
+const FromTo: FC<FromToProps> = ({ testID }) => {
   const { navigate } = useNavigation<AppNavigationProps>();
 
-  const [data, setData] = useState<[CurrencyType, CurrencyType]>([
-    currencies[0],
-    currencies[1],
-  ]);
-
-  useEffect(() => {
-    setData([currencies[0], currencies[1]]);
-  }, [currencies]);
+  const fromCurrency = useCurrencyStore(state => state.fromCurrency);
+  const toCurrency = useCurrencyStore(state => state.toCurrency);
+  const switchCurrencies = useCurrencyStore(state => state.switchCurrencies);
 
   const selectCurrency = useCallback(() => {
-    navigate('CurrencySelect', { currencies });
-  }, [navigate, currencies]);
-
-  const handleSwitch = () => {
-    setData(([from, to]) => [to, from]);
-  };
+    navigate('CurrencySelect', { currencies: currency });
+  }, [navigate]);
 
   return (
     <View testID={testID} style={styles.container}>
       <CurrencySelect
         testID={`${testID}-from`}
         title="From"
-        data={data[0]}
+        data={fromCurrency}
         selectCurrency={selectCurrency}
       />
 
       <TouchableOpacity
         testID={`${testID}-switch`}
         style={styles.switch}
-        onPress={handleSwitch}>
+        onPress={switchCurrencies}>
         <Ui.Icon testID="" type="reverse" size={16} />
       </TouchableOpacity>
 
       <CurrencySelect
         testID={`${testID}-to`}
         title="To"
-        data={data[1]}
+        data={toCurrency}
         selectCurrency={selectCurrency}
       />
     </View>

@@ -3,7 +3,6 @@ import { TextInputProps } from '@_types/props/input';
 
 export interface FromToProps {
   testID: string;
-  currencies: CurrencyType[];
 }
 
 export interface CurrencySelectProps {
