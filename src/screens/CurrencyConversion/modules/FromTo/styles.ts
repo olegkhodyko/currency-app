@@ -7,10 +7,4 @@ export default StyleSheet.create({
     alignItems: 'flex-end',
     gap: 16,
   },
-  switch: {
-    width: 42,
-    aspectRatio: 1 / 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
 });

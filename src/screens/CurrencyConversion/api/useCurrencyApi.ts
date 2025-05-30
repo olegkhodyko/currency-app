@@ -5,16 +5,15 @@ import { useRequest } from '@api/useRequest';
 export default function useCurrencyApi() {
   const { request, data, loading, error } = useRequest<ConvertResult>();
 
-  const getRates = (from: string, to?: string) => {
-    return request({
+  const getRates = (from: string, to?: string) =>
+    request({
       url: '/latest',
       method: 'GET',
       params: { from, ...(to && { to }) },
     });
-  };
 
-  const convertCurrency = async (params: ConvertCurrencyProps) => {
-    return request({
+  const convertCurrency = (params: ConvertCurrencyProps) =>
+    request({
       url: '/convert',
       method: 'GET',
       params: {
@@ -23,7 +22,6 @@ export default function useCurrencyApi() {
         amount: params.amount,
       },
     });
-  };
 
   return { getRates, convertCurrency, data, loading, error };
 }

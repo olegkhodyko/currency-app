@@ -7,8 +7,9 @@ import {
   recalculateResult,
 } from '@screens/CurrencyConversion/utils';
 import { useCurrencyStore } from '@store/currencyStore';
+import { UseFetchConversionsProps } from '@screens/CurrencyConversion/types';
 
-const useFetchConversions = () => {
+const useFetchConversions = (): UseFetchConversionsProps => {
   const { convertCurrency } = useCurrencyApi();
   const history = useConversionHistory();
   const [data, setData] = useState<ConvertResult | null>(null);

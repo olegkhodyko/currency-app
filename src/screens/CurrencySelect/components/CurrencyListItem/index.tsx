@@ -1,12 +1,11 @@
 import { Ui } from '@components';
 import { TouchableOpacity, View } from 'react-native';
 import { FC, memo } from 'react';
-import { CurrencyItemProps } from '@screens/CurrencySelect/types/props';
+import { CurrencyItemProps } from '@screens/CurrencySelect/types';
 import { useCurrencyStore } from '@store/currencyStore';
+import styles from './styles';
 
-import styles from '../styles';
-
-const CurrencyItem: FC<CurrencyItemProps> = memo(
+const CurrencyListItem: FC<CurrencyItemProps> = memo(
   ({ testID, item, onSelect }) => {
     const isActive = useCurrencyStore(state => state.activeId === item.id);
 
@@ -15,8 +14,9 @@ const CurrencyItem: FC<CurrencyItemProps> = memo(
         accessibilityRole="button"
         onPress={() => onSelect(item)}
         testID={testID}
-        style={[styles.item, isActive && styles.active]}>
-        <View style={styles.currencyItem}>
+        style={[styles.container, isActive && styles.active]}>
+
+        <View style={styles.currency}>
           <Ui.Flag testID={`${testID}-img`} size={30} uri={item.flagSrc} />
           <Ui.Text>{item.code}</Ui.Text>
         </View>
@@ -31,4 +31,4 @@ const CurrencyItem: FC<CurrencyItemProps> = memo(
   },
 );
 
-export default CurrencyItem;
+export default CurrencyListItem;

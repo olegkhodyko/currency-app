@@ -2,7 +2,6 @@ import React, { FC, memo } from 'react';
 import { Ui } from '@components';
 import { TouchableOpacity, View } from 'react-native';
 import { CurrencySelectProps } from '@screens/CurrencyConversion/types';
-
 import styles from './styles';
 
 const CurrencySelect: FC<CurrencySelectProps> = memo(

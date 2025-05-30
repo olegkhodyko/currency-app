@@ -6,4 +6,7 @@ module.exports = {
       'babel-module': {},
     },
   },
+  rules: {
+    'react-hooks/exhaustive-deps': 'off',
+  },
 };

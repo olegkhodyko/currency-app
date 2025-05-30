@@ -19,9 +19,17 @@ export const useCurrencyStore = create<CurrencyState>(
     fromCurrency: currencies[0],
     toCurrency: currencies[1],
     amount: 0,
+    searchValue: '',
 
     setActiveId: (id: CurrencyType['id']) => {
       set({ activeId: id });
+    },
+
+    setSearchValue: (value: string) => {
+      set({ searchValue: value });
+    },
+    resetSearchValue: () => {
+      set({ searchValue: '' });
     },
 
     changeCurrency: (currency, type) => {

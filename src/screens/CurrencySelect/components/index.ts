@@ -1,4 +1,2 @@
-export { default as CurrencyItem } from './CurrencyItem';
-export { default as CurrencyList } from './CurrencyList';
-export { default as CurrencySearch } from './CurrencySearch';
-export { default as CurrencyNoResults } from './CurrencyNoResults';
+export { default as CurrencyListItem } from './CurrencyListItem';
+export { default as CurrencyEmptyList } from './CurrencyEmptyList';

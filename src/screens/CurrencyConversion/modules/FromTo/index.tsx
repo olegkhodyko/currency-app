@@ -1,12 +1,14 @@
 import React, { FC, useCallback } from 'react';
-import { Ui } from '@components';
-import { CurrencySelect } from '@screens/CurrencyConversion/modules';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import { FromToProps } from '@screens/CurrencyConversion/types';
 import { useNavigation } from '@react-navigation/native';
 import { AppNavigationProps } from '@_types/navigation';
 import { useCurrencyStore, currencies } from '@store/currencyStore';
 import { CurrencySelectType, CurrencyType } from '@_types/props/currency';
+import {
+  CurrencySelect,
+  CurrencySwitcher,
+} from '@screens/CurrencyConversion/components';
 
 import styles from './styles';
 
@@ -15,7 +17,6 @@ const FromTo: FC<FromToProps> = ({ testID }) => {
 
   const fromCurrency = useCurrencyStore(state => state.fromCurrency);
   const toCurrency = useCurrencyStore(state => state.toCurrency);
-  const switchCurrencies = useCurrencyStore(state => state.switchCurrencies);
   const setActiveId = useCurrencyStore(state => state.setActiveId);
 
   const selectCurrency = useCallback(
@@ -45,12 +46,7 @@ const FromTo: FC<FromToProps> = ({ testID }) => {
         selectCurrency={selectFromCurrency}
       />
 
-      <TouchableOpacity
-        testID={`${testID}-switch`}
-        style={styles.switch}
-        onPress={switchCurrencies}>
-        <Ui.Icon testID="" type="reverse" size={16} />
-      </TouchableOpacity>
+      <CurrencySwitcher testID={`${testID}-switcher`} />
 
       <CurrencySelect
         testID={`${testID}-to`}

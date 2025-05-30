@@ -1,5 +1,5 @@
-import CurrencyConversion from './CurrencyConversion/CurrencyConversion';
-import CurrencySelect from './CurrencySelect/CurrencySelect';
+import CurrencyConversion from './CurrencyConversion';
+import CurrencySelect from './CurrencySelect';
 
 export default {
   CurrencyConversion,

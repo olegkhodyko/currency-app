@@ -11,7 +11,10 @@ export interface CurrencyState {
   fromCurrency: CurrencyType;
   toCurrency: CurrencyType;
   amount: number;
+  searchValue: string;
   changeAmount: (amount: number) => void;
+  setSearchValue: (value: string) => void;
+  resetSearchValue: () => void;
   changeCurrency: (currency: CurrencyType, type: CurrencySelectType) => void;
   switchCurrencies: () => void;
   setActiveId: (id: number) => void;

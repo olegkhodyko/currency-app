@@ -18,6 +18,7 @@ export default function CurrencyConversion() {
   return (
     <Layout.ScreenContainer testID={name} style={styles.container}>
       {isLoading && <Layout.Loader />}
+
       <FromTo testID={`${name}-from_to`} />
       <AmountInput
         testID={`${name}-amount-input`}
