@@ -18,3 +18,14 @@ export const recalculateResult = (
     result: cached.info.rate * newAmount,
   };
 };
+export const formatCurrency = (
+  value: number,
+  currencySymbol: string = '',
+  decimalPlaces: number = 2,
+): string => {
+  if (isNaN(value)) {
+    return `${currencySymbol}0.00`;
+  }
+
+  return `${currencySymbol}${value.toFixed(decimalPlaces)}`;
+};

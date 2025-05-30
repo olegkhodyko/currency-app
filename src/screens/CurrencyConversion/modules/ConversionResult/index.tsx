@@ -2,19 +2,22 @@ import React, { FC } from 'react';
 import { Ui } from '@components';
 import { ConversionResultProps } from '@screens/CurrencyConversion/types';
 import { View } from 'react-native';
-import styles from './styles';
 import { useCurrencyStore } from '@store/currencyStore';
+import { formatCurrency } from '@screens/CurrencyConversion/utils';
+
+import styles from './styles';
 
 const ConversionResult: FC<ConversionResultProps> = ({ testID, data }) => {
   const {
-    query: { amount },
     result,
+    query: { amount },
   } = data;
+
   const from = useCurrencyStore(state => state.fromCurrency);
   const to = useCurrencyStore(state => state.toCurrency);
 
-  const amountTitle = `${from.symbol}${amount.toFixed(2)} = `;
-  const resultTitle = `${to.symbol}${result.toFixed(2)}`;
+  const amountTitle = `${formatCurrency(amount, from?.symbol)} = `;
+  const resultTitle = formatCurrency(result, to?.symbol);
 
   return (
     <View style={styles.container} testID={testID}>

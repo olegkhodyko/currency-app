@@ -2,7 +2,10 @@ import { useEffect, useState } from 'react';
 import { useCurrencyApi } from '@screens/CurrencyConversion/api';
 import { useConversionHistory } from '@screens/CurrencyConversion/hooks';
 import { ConvertResult } from '@_types/state/currency';
-import { isExpiredTime, recalculateResult } from '../helpers';
+import {
+  isExpiredTime,
+  recalculateResult,
+} from '@screens/CurrencyConversion/utils';
 import { useCurrencyStore } from '@store/currencyStore';
 
 const useFetchConversions = () => {
