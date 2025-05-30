@@ -18,6 +18,7 @@ export const useCurrencyStore = create<CurrencyState>(
     activeId: -1,
     fromCurrency: currencies[0],
     toCurrency: currencies[1],
+    amount: 0,
 
     setActiveId: (id: CurrencyType['id']) => {
       set({ activeId: id });
@@ -31,6 +32,10 @@ export const useCurrencyStore = create<CurrencyState>(
           : { toCurrency: currency }),
       };
       set(newState);
+    },
+
+    changeAmount: (_amount: number) => {
+      set({ amount: _amount });
     },
 
     switchCurrencies: () => {

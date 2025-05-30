@@ -3,6 +3,9 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "@api": ["api/index.ts"],
+      "@api/*": ["api/*"],
+
       "@assets": ["assets/index.ts"],
       "@assets/*": ["assets/*"],
 
