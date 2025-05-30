@@ -1,6 +1,10 @@
 import React from 'react';
-import { Layout, Ui } from '@components';
-import { FromTo, AmountInput } from '@screens/CurrencyConversion/modules';
+import { Layout } from '@components';
+import {
+  FromTo,
+  AmountInput,
+  ConversionResult,
+} from '@screens/CurrencyConversion/modules';
 import { TypedRoute } from '@_types/navigation';
 import { useRoute } from '@react-navigation/native';
 import { useFetchConversions } from '@screens/CurrencyConversion/hooks';
@@ -20,9 +24,9 @@ export default function CurrencyConversion() {
         title="Amount"
         editable={!isLoading}
       />
-
-      <Ui.Text>{data ? data.query.amount : 0}</Ui.Text>
-      <Ui.Text>{data ? data.result.toFixed(2) : 0}</Ui.Text>
+      {data && (
+        <ConversionResult testID={`${name}-conversion-result`} data={data} />
+      )}
     </Layout.ScreenContainer>
   );
 }

@@ -22,7 +22,7 @@ export const TEXT_STYLES = {
   extraLarge: {
     fontSize: FONTS.SIZE.extraLarge,
     lineHeight: FONTS.SIZE.extraLarge * 1.2,
-    fontWeight: FONTS.WEIGHT.bold,
+    fontWeight: FONTS.WEIGHT.regular,
     fontFamily: 'Roboto-Regular',
   },
   large: {
