@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { RollingDigit } from './RollingDigit';
 import { TextStyleVariant } from '@_types/props/text';
 import { TEXT_STYLES } from '@theme';
+import { isDigit } from '@utils/validators/regex';
 
 import styles from './styles';
 
@@ -14,7 +15,7 @@ interface AnimatedNumberProps {
 const AnimatedNumber: FC<AnimatedNumberProps> = ({ numberString, variant }) => (
   <View style={styles.counterContainer}>
     {numberString.split('').map((char, idx) => {
-      if (/\d/.test(char)) {
+      if (isDigit(char)) {
         return (
           <RollingDigit key={idx} digit={Number(char)} variant={variant} />
         );

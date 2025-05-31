@@ -19,7 +19,7 @@ export const RollingDigit: React.FC<RollingDigitProps> = ({
   digit,
   variant,
 }) => {
-  const DIGIT_HEIGHT = TEXT_STYLES[variant].fontSize * 1.2;
+  const DIGIT_HEIGHT = TEXT_STYLES[variant].lineHeight;
   const translateY = useSharedValue(0);
 
   const animatedStyle = useAnimatedStyle(() => ({
