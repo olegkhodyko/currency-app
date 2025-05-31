@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Text as RNText } from 'react-native';
-import { TEXT_STYLES, TextComponentProps } from '@_types/props/text';
-import { COLORS } from '@theme';
+import { TextComponentProps } from '@_types/props/text';
+import { COLORS, TEXT_STYLES } from '@theme';
 
 export const Text: FC<TextComponentProps> = ({
   children,

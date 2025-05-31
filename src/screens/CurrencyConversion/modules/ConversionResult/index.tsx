@@ -22,9 +22,7 @@ const ConversionResult: FC<ConversionResultProps> = ({ testID, data }) => {
   return (
     <View style={styles.container} testID={testID}>
       <Ui.Text testID={`${testID}-amount`}>{amountTitle}</Ui.Text>
-      <Ui.Text testID={`${testID}-result`} variant="extraLarge">
-        {resultTitle}
-      </Ui.Text>
+      <Ui.AnimatedNumber numberString={resultTitle} variant="extraLarge" />
     </View>
   );
 };

@@ -1,9 +1,8 @@
 import React from 'react';
 import Screens from '@screens/index';
-
 import { ApplicationStackParamList } from '@_types/navigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { TEXT_STYLES } from '@_types/props/text';
+import { TEXT_STYLES } from '@theme';
 
 export default function RootStack() {
   const Stack = createNativeStackNavigator<ApplicationStackParamList>();
@@ -21,9 +20,6 @@ export default function RootStack() {
         options={{
           title: 'Currency Select',
           headerTitleStyle: TEXT_STYLES.large,
-          // headerTitle: () => (
-          //   <Layout.NavigationHeader title="Currency Select" />
-          // ),
         }}
         name="CurrencySelect"
         component={Screens.CurrencySelect}

@@ -1,4 +1,4 @@
-const COLORS = {
+export default {
   textPrimary: '#000000',
   textSecondary: '#DEDEDE',
   error: '#FF3333',
@@ -8,5 +8,3 @@ const COLORS = {
   borderPrimary: '#000000',
   white: '#FFFFFF',
 } as const;
-
-export default COLORS;
