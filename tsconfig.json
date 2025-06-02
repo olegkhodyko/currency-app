@@ -3,12 +3,41 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
+      "@api": ["api/index.ts"],
+      "@api/*": ["api/*"],
+
+      "@assets": ["assets/index.ts"],
+      "@assets/*": ["assets/*"],
+
+      "@components": ["components/index.ts"],
       "@components/*": ["components/*"],
-      "@screens/*": ["screens/*"],
+
+      "@constants": ["constants/index.ts"],
+      "@constants/*": ["constants/*"],
+
+      "@hooks": ["hooks/index.ts"],
+      "@hooks/*": ["hooks/*"],
+
+      "@navigation": ["navigation/index.ts"],
       "@navigation/*": ["navigation/*"],
+
+      "@screens": ["screens/index.ts"],
+      "@screens/*": ["screens/*"],
+
+      "@store": ["store/index.ts"],
+      "@store/*": ["store/*"],
+
+      "@modules": ["modules/index.ts"],
+      "@modules/*": ["modules/*"],
+
+      "@theme": ["theme/index.ts"],
+      "@theme/*": ["theme/*"],
+
+      "@utils": ["utils/index.ts"],
       "@utils/*": ["utils/*"],
-      "@_types/*": ["types/*"],
-      "@assets/*": ["assets/*"]
+
+      "@_types": ["types/index.ts"],
+      "@_types/*": ["types/*"]
     }
   }
 }

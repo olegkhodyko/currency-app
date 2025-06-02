@@ -1,5 +1,9 @@
-import Home from './Home/Home';
+import Splash from './Splash';
+import CurrencyConversion from './CurrencyConversion';
+import CurrencySelect from './CurrencySelect';
 
 export default {
-  Home,
+  Splash,
+  CurrencyConversion,
+  CurrencySelect,
 };
