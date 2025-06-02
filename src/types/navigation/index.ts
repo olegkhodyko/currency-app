@@ -6,14 +6,31 @@ export type TypedRoute<T extends keyof ApplicationStackParamList> = RouteProp<
   ApplicationStackParamList,
   T
 >;
+export type TypedNavigation<T extends keyof ApplicationStackParamList> =
+  NativeStackNavigationProp<ApplicationStackParamList, T>;
 
 export type AppNavigationProps =
   NativeStackNavigationProp<ApplicationStackParamList>;
 
 export type ApplicationStackParamList = {
-  CurrencyConversion: undefined;
-  CurrencySelect: {
-    currencies: CurrencyType[];
-    type: CurrencySelectType;
-  };
+  Splash: undefined;
+  CurrencyConversion: CurrencyConversionScreen;
+  CurrencySelect: CurrencySelectScreen;
 };
+
+interface CurrencyConversionScreen {
+  currencies: CurrencyType[];
+}
+
+interface CurrencySelectScreen extends CurrencyConversionScreen {
+  type: CurrencySelectType;
+}
+
+export interface CurrencyConversionScreenProps {
+  navigation: TypedNavigation<'CurrencyConversion'>;
+  route: TypedRoute<'CurrencyConversion'>;
+}
+export interface CurrencySelectScreenProps {
+  navigation: TypedNavigation<'CurrencySelect'>;
+  route: TypedRoute<'CurrencySelect'>;
+}

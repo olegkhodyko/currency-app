@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Layout } from '@components';
 import { CurrencyList, CurrencySearch } from '@screens/CurrencySelect/modules';
-import { useRoute } from '@react-navigation/native';
-import { TypedRoute } from '@_types/navigation';
+import { CurrencySelectScreenProps } from '@_types/navigation';
 import styles from './styles';
 
-export default function CurrencySelectScreen() {
-  const { name } = useRoute<TypedRoute<'CurrencySelect'>>();
+const CurrencySelectScreen: FC<CurrencySelectScreenProps> = ({ route }) => {
+  const { name } = route;
 
   return (
     <Layout.ScreenContainer testID={name} style={styles.container}>
@@ -14,4 +13,5 @@ export default function CurrencySelectScreen() {
       <CurrencyList testID={`${name}-list`} />
     </Layout.ScreenContainer>
   );
-}
+};
+export default CurrencySelectScreen;

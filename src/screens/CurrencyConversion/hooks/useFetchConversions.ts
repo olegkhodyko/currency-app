@@ -36,7 +36,6 @@ const useFetchConversions = (): UseFetchConversionsProps => {
         history.set(key, result);
         setData(result);
       } catch (err) {
-        console.log(err);
         showErrorToast({
           title: Constants.Error.RequestTitle,
           message: Constants.Error.FetchConversionMessage,

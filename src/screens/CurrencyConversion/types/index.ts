@@ -1,3 +1,4 @@
+import { CurrencySelectScreenProps } from '@_types/navigation';
 import { ConvertCurrencyProps, CurrencyType } from '@_types/props/currency';
 import { TextInputProps } from '@_types/props/input';
 import { UseRequestState } from '@_types/state/api';
@@ -50,6 +51,12 @@ export interface UseConversionHistoryProps {
   remove: (key: string) => boolean;
 }
 
+export interface UseFromToProps {
+  fromCurrency: CurrencyType;
+  toCurrency: CurrencyType;
+  selectFromCurrency: () => void;
+  selectToCurrency: () => void;
+}
 export interface UseFetchConversionsProps {
   data: ConvertResult | null;
   isLoading: boolean;
