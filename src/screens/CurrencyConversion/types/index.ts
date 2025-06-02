@@ -1,4 +1,3 @@
-import { CurrencySelectScreenProps } from '@_types/navigation';
 import { ConvertCurrencyProps, CurrencyType } from '@_types/props/currency';
 import { TextInputProps } from '@_types/props/input';
 import { UseRequestState } from '@_types/state/api';
