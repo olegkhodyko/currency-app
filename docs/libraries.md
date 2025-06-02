@@ -2,6 +2,8 @@
 
 For animations, **react-native-reanimated** was used — a performant and declarative animation library optimized specifically for React Native.
 
+For animations, **react-native-reanimated** was used — a performant and declarative animation library optimized specifically for React Native. Additionally, **lottie-react-native** was integrated to enable smooth and complex vector animations using JSON-based Lottie files, enhancing the visual appeal of the app with minimal performance overhead.
+
 For state management, **Zustand** was utilized. It is lightweight and simple to use, enabling easy global state management without the need for boilerplate code.
 
 Other key libraries included:

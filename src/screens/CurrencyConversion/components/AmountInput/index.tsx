@@ -22,6 +22,7 @@ const AmountInput: FC<AmountInputProps> = ({ testID, isLoading, ...rest }) => {
       />
       {isLoading && (
         <ActivityIndicator
+          testID={`${testID}-loading`}
           style={styles.indicator}
           color={COLORS.textPrimary}
         />

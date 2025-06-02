@@ -19,7 +19,7 @@ export default function App(): React.JSX.Element {
   };
 
   return (
-    <View style={backgroundStyle}>
+    <View style={backgroundStyle} testID="main-app-container">
       <NavigationContainer>
         <StatusBar
           barStyle={isDarkMode ? 'light-content' : 'dark-content'}
