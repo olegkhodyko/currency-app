@@ -1,23 +1,26 @@
 import React, { FC } from 'react';
 import { View, Text } from 'react-native';
 import { RollingDigit } from './RollingDigit';
-import { TextStyleVariant } from '@_types/props/text';
 import { TEXT_STYLES } from '@theme';
 import { isDigit } from '@utils/validators/regex';
-
+import { AnimatedNumberProps } from '@_types/props/components';
 import styles from './styles';
 
-interface AnimatedNumberProps {
-  numberString: string;
-  variant: TextStyleVariant;
-}
-
-const AnimatedNumber: FC<AnimatedNumberProps> = ({ numberString, variant }) => (
-  <View style={styles.counterContainer}>
+const AnimatedNumber: FC<AnimatedNumberProps> = ({
+  testID,
+  numberString,
+  variant = 'extraLarge',
+}) => (
+  <View style={styles.counterContainer} testID={testID}>
     {numberString.split('').map((char, idx) => {
       if (isDigit(char)) {
         return (
-          <RollingDigit key={idx} digit={Number(char)} variant={variant} />
+          <RollingDigit
+            key={idx}
+            digit={Number(char)}
+            variant={variant}
+            testID={`${testID}-rolling`}
+          />
         );
       }
       return (

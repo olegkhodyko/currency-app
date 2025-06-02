@@ -1,14 +1,14 @@
 import React from 'react';
+import Toast from 'react-native-toast-message';
 import { Layout } from '@components';
 import {
   FromTo,
-  AmountInput,
+  CurrencyAmount,
   ConversionResult,
 } from '@screens/CurrencyConversion/modules';
 import { TypedRoute } from '@_types/navigation';
 import { useRoute } from '@react-navigation/native';
 import { useFetchConversions } from '@screens/CurrencyConversion/hooks';
-
 import styles from './styles';
 
 export default function CurrencyConversion() {
@@ -17,17 +17,10 @@ export default function CurrencyConversion() {
 
   return (
     <Layout.ScreenContainer testID={name} style={styles.container}>
-      {isLoading && <Layout.Loader />}
-
-      <FromTo testID={`${name}-from_to`} />
-      <AmountInput
-        testID={`${name}-amount-input`}
-        title="Amount"
-        editable={!isLoading}
-      />
-      {data && (
-        <ConversionResult testID={`${name}-conversion-result`} data={data} />
-      )}
+      <Toast />
+      <FromTo testID={`${name}-[from:to]`} />
+      <CurrencyAmount testID={`${name}-amount`} isLoading={isLoading} />
+      <ConversionResult testID={`${name}-conversion`} data={data} />
     </Layout.ScreenContainer>
   );
 }

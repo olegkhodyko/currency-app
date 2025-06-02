@@ -1,3 +1,3 @@
 export { default as FromTo } from './FromTo';
-export { default as AmountInput } from './AmountInput';
+export { default as CurrencyAmount } from './CurrencyAmount';
 export { default as ConversionResult } from './ConversionResult';

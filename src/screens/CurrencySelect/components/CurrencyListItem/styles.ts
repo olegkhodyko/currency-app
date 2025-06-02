@@ -1,3 +1,4 @@
+import Constants from '@utils/constants';
 import { COLORS } from '@theme';
 import { StyleSheet } from 'react-native';
 
@@ -6,9 +7,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingVertical: 16,
     paddingHorizontal: 16,
     borderRadius: 8,
+    height: Constants.Dimensions.SearchItemHeight,
   },
   active: {
     backgroundColor: COLORS.backgroundActive,

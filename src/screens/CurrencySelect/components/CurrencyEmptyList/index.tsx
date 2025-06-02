@@ -1,15 +1,16 @@
 import React, { FC } from 'react';
-import { View } from 'react-native';
-import { Ui } from '@components';
-import { CurrencyNoResultsProps } from '@screens/CurrencySelect/types';
+import Logo from '@assets/images/noResults.svg';
+import { Dimensions, View } from 'react-native';
+import { CurrencyEmptyListProps } from '@screens/CurrencySelect/types';
 import styles from './styles';
 
-const CurrencyNoResults: FC<CurrencyNoResultsProps> = ({ testID }) => (
+const CurrencyEmptyList: FC<CurrencyEmptyListProps> = ({ testID }) => (
   <View testID={testID} style={styles.container}>
-    <Ui.Text variant="large" color="textPrimary">
-      No results
-    </Ui.Text>
+    <Logo
+      width={Dimensions.get('screen').width * 0.8}
+      height={Dimensions.get('screen').width * 0.8}
+    />
   </View>
 );
 
-export default CurrencyNoResults;
+export default CurrencyEmptyList;

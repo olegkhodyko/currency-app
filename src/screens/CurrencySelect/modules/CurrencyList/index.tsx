@@ -1,4 +1,5 @@
-import React, { FC, useCallback, useMemo } from 'react';
+import React, { FC, useCallback } from 'react';
+import Constants from '@utils/constants';
 import { FlatList } from 'react-native';
 import { CurrencyType } from '@_types/props/currency';
 import {
@@ -6,34 +7,12 @@ import {
   CurrencyEmptyList,
 } from '@screens/CurrencySelect/components';
 import { CurrencyListProps } from '@screens/CurrencySelect/types';
-import { useCurrencyStore } from '@store/currencyStore';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { AppNavigationProps, TypedRoute } from '@_types/navigation';
-import { filterCurrencies } from '@screens/CurrencySelect/utils';
+import { useCurrencyList } from '@screens/CurrencySelect/hooks';
 import styles from './styles';
 
 const CurrencyList: FC<CurrencyListProps> = ({ testID }) => {
-  const {
-    params: { currencies, type },
-  } = useRoute<TypedRoute<'CurrencySelect'>>();
-  const { goBack } = useNavigation<AppNavigationProps>();
-
-  const changeCurrency = useCurrencyStore(state => state.changeCurrency);
-  const resetSearchValue = useCurrencyStore(state => state.resetSearchValue);
-  const searchValue = useCurrencyStore(state => state.searchValue);
-
-  const filteredCurrencies = useMemo(() => {
-    return filterCurrencies(currencies, searchValue);
-  }, [currencies, searchValue]);
-
-  const onSelect = useCallback(
-    (currency: CurrencyType) => {
-      changeCurrency(currency, type);
-      resetSearchValue();
-      goBack();
-    },
-    [type],
-  );
+  const { onSelect, flatListRef, filteredCurrencies, searchValue } =
+    useCurrencyList();
 
   const renderItem = useCallback(
     ({ item }: { item: CurrencyType }) => (
@@ -48,17 +27,21 @@ const CurrencyList: FC<CurrencyListProps> = ({ testID }) => {
 
   return (
     <FlatList
+      ref={flatListRef}
       testID={testID}
       data={filteredCurrencies}
       renderItem={renderItem}
       keyExtractor={({ id }) => `${id}`}
       style={styles.list}
-      contentContainerStyle={[styles.container]}
+      contentContainerStyle={styles.container}
       showsVerticalScrollIndicator={false}
-      maxToRenderPerBatch={15}
-      initialNumToRender={15}
-      windowSize={21}
-      removeClippedSubviews={true}
+      maxToRenderPerBatch={24}
+      initialNumToRender={24}
+      getItemLayout={(_, index) => ({
+        length: Constants.Dimensions.SearchItemHeight,
+        offset: Constants.Dimensions.SearchItemHeight * index,
+        index,
+      })}
       ListEmptyComponent={
         searchValue ? <CurrencyEmptyList testID={`${testID}-empty`} /> : null
       }

@@ -1,44 +1,38 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import Animated, { useAnimatedStyle } from 'react-native-reanimated';
 import { View, Text } from 'react-native';
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-} from 'react-native-reanimated';
-import { TextStyleVariant } from '@_types/props/text';
+import { useMeasuredHeight, useRollingDigitAnimation } from '@hooks';
 import { TEXT_STYLES } from '@theme';
-
+import { RollingDigitProps } from '@_types/props/components';
 import styles from './styles';
-
-interface RollingDigitProps {
-  digit: number;
-  variant: TextStyleVariant;
-}
 
 export const RollingDigit: React.FC<RollingDigitProps> = ({
   digit,
   variant,
 }) => {
-  const DIGIT_HEIGHT = TEXT_STYLES[variant].lineHeight;
-  const translateY = useSharedValue(0);
-
+  const { height, onLayout } = useMeasuredHeight();
+  const translateY = useRollingDigitAnimation(digit, height);
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ translateY: translateY.value }],
   }));
 
-  useEffect(() => {
-    translateY.value = withTiming(-digit * DIGIT_HEIGHT, { duration: 800 });
-  }, [digit]);
-
   return (
-    <View style={[styles.digitContainer, { height: DIGIT_HEIGHT }]}>
-      <Animated.View style={animatedStyle}>
-        {[...Array(10).keys()].map(n => (
-          <Text key={n} style={[TEXT_STYLES[variant]]}>
-            {n}
-          </Text>
-        ))}
-      </Animated.View>
+    <View style={[styles.digitContainer, { height: height || undefined }]}>
+      <Text
+        style={[TEXT_STYLES[variant], styles.hiddenElement]}
+        onLayout={onLayout}>
+        0
+      </Text>
+
+      {height > 0 && (
+        <Animated.View style={animatedStyle}>
+          {[...Array(10).keys()].map(n => (
+            <Text key={n} style={TEXT_STYLES[variant]}>
+              {n}
+            </Text>
+          ))}
+        </Animated.View>
+      )}
     </View>
   );
 };

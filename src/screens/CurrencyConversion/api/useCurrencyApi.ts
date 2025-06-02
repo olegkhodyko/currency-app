@@ -1,19 +1,13 @@
+import { useRequest } from '@api/useRequest';
 import { ConvertCurrencyProps } from '@_types/props/currency';
 import { ConvertResult } from '@_types/state/currency';
-import { useRequest } from '@api/useRequest';
+import { UseCurrencyApiProps } from '@screens/CurrencyConversion/types';
 
-export default function useCurrencyApi() {
-  const { request, data, loading, error } = useRequest<ConvertResult>();
-
-  const getRates = (from: string, to?: string) =>
-    request({
-      url: '/latest',
-      method: 'GET',
-      params: { from, ...(to && { to }) },
-    });
+export default function useCurrencyApi(): UseCurrencyApiProps<ConvertResult> {
+  const requestData = useRequest<ConvertResult>();
 
   const convertCurrency = (params: ConvertCurrencyProps) =>
-    request({
+    requestData.request({
       url: '/convert',
       method: 'GET',
       params: {
@@ -23,5 +17,5 @@ export default function useCurrencyApi() {
       },
     });
 
-  return { getRates, convertCurrency, data, loading, error };
+  return { ...requestData, convertCurrency };
 }

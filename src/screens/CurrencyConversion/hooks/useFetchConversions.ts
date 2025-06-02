@@ -1,17 +1,18 @@
+import Constants from '@utils/constants';
 import { useEffect, useState } from 'react';
 import { useCurrencyApi } from '@screens/CurrencyConversion/api';
 import { useConversionHistory } from '@screens/CurrencyConversion/hooks';
 import { ConvertResult } from '@_types/state/currency';
-import {
-  isExpiredTime,
-  recalculateResult,
-} from '@screens/CurrencyConversion/utils';
+import { recalculateResult } from '@screens/CurrencyConversion/utils';
 import { useCurrencyStore } from '@store/currencyStore';
 import { UseFetchConversionsProps } from '@screens/CurrencyConversion/types';
+import { showErrorToast } from '@utils/configs/toast';
+import { checkEveryTruthy, isExpiredTime } from '@utils/validators/common';
 
 const useFetchConversions = (): UseFetchConversionsProps => {
   const { convertCurrency } = useCurrencyApi();
   const history = useConversionHistory();
+
   const [data, setData] = useState<ConvertResult | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -20,7 +21,7 @@ const useFetchConversions = (): UseFetchConversionsProps => {
   const amount = useCurrencyStore(state => state.amount);
 
   useEffect(() => {
-    if (from === '' || to === '' || amount === 0) {
+    if (!checkEveryTruthy([from, to, amount])) {
       setData(null);
       return;
     }
@@ -35,24 +36,38 @@ const useFetchConversions = (): UseFetchConversionsProps => {
         history.set(key, result);
         setData(result);
       } catch (err) {
-        console.error(err);
+        console.log(err);
+        showErrorToast({
+          title: Constants.Error.RequestTitle,
+          message: Constants.Error.FetchConversionMessage,
+        });
       } finally {
         setIsLoading(false);
       }
     };
 
-    if (cached) {
-      if (isExpiredTime(cached.date, 5)) {
-        history.set(key, undefined!);
+    const checkInCache = (cachedData: ConvertResult) => {
+      if (
+        isExpiredTime(
+          cachedData.date,
+          Constants.DefaultExpiredHistoryMin,
+          'minute',
+        )
+      ) {
+        history.remove(key);
         fetchAndCache();
       } else {
-        const updated = recalculateResult(cached, amount);
+        const updated = recalculateResult(cachedData, amount);
         setData(updated);
       }
-    } else {
+    };
+
+    if (!cached) {
       fetchAndCache();
+    } else {
+      checkInCache(cached);
     }
-  }, [amount, from, to]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [amount, from, to]);
 
   return { data, isLoading };
 };

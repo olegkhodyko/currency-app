@@ -11,4 +11,8 @@ export default StyleSheet.create({
     overflow: 'hidden',
     alignItems: 'center',
   },
+  hiddenElement: {
+    position: 'absolute',
+    opacity: 0,
+  },
 });

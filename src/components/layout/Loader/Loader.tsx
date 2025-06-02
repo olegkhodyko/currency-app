@@ -1,16 +1,12 @@
-import { Ui } from '@components';
 import React from 'react';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 import styles from './styles';
+import { COLORS } from '@theme';
 
-const Loader = () => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.content}>
-        <Ui.Text>Loading...</Ui.Text>
-      </View>
-    </View>
-  );
-};
+const Loader = () => (
+  <View style={styles.container}>
+    <ActivityIndicator color={COLORS.white} size={30} />
+  </View>
+);
 
 export default Loader;

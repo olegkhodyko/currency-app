@@ -1,15 +1,11 @@
-import { useState, useCallback } from 'react';
 import api from '@api';
+import { useState, useCallback } from 'react';
 import { AxiosRequestConfig, AxiosError } from 'axios';
+import { UseRequestState } from '@_types/state/api';
+import { UseRequestProps } from '@_types/props/api';
 
-type State<T> = {
-  data: T | null;
-  loading: boolean;
-  error: string | null;
-};
-
-export function useRequest<T>() {
-  const [state, setState] = useState<State<T>>({
+export function useRequest<T>(): UseRequestProps<T> {
+  const [state, setState] = useState<UseRequestState<T>>({
     data: null,
     loading: false,
     error: null,

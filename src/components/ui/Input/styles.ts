@@ -9,4 +9,7 @@ export default StyleSheet.create({
     borderRadius: 8,
     borderColor: COLORS.borderPrimary,
   },
+  muted: {
+    opacity: 0.1,
+  },
 });

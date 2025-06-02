@@ -1,3 +1,4 @@
+import { COLORS } from '@theme';
 import { Dimensions, StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
@@ -7,16 +8,7 @@ export default StyleSheet.create({
     height: Dimensions.get('screen').height,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: COLORS.loadingBackground,
     zIndex: 1,
-  },
-  content: {
-    width: Dimensions.get('screen').width * 0.4,
-    height: 70,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 2,
-    borderRadius: 12,
   },
 });

@@ -1,10 +1,11 @@
 import { useCallback, useRef } from 'react';
+import Constants from '@utils/constants';
 
 type CallbackType<T> = (...args: T[]) => void;
 
 export default function useDebounce<T>(
   callback: CallbackType<T>,
-  delay: number = 1000,
+  delay: number = Constants.DefaultDebounceDelay,
 ) {
   let timer = useRef<ReturnType<typeof setTimeout>>(null);
 

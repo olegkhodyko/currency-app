@@ -3,7 +3,6 @@ import { Layout } from '@components';
 import { CurrencyList, CurrencySearch } from '@screens/CurrencySelect/modules';
 import { useRoute } from '@react-navigation/native';
 import { TypedRoute } from '@_types/navigation';
-
 import styles from './styles';
 
 export default function CurrencySelectScreen() {

@@ -9,8 +9,9 @@ const useConversionHistory = (): UseConversionHistoryProps => {
   const set = (key: string, value: ConvertResult) =>
     historyRef.current.set(key, value);
   const has = (key: string) => historyRef.current.has(key);
+  const remove = (key: string) => historyRef.current.delete(key);
 
-  return { get, set, has };
+  return { get, set, has, remove };
 };
 
 export default useConversionHistory;

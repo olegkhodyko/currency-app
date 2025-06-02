@@ -6,5 +6,6 @@ export default {
   backgroundSecondary: '#E7E7E7',
   backgroundActive: '#DEDEDE',
   borderPrimary: '#000000',
+  loadingBackground: 'rgba(0, 0, 0, 0.5)',
   white: '#FFFFFF',
 } as const;

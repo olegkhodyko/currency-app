@@ -1,24 +1,12 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import { View } from 'react-native';
 import { Ui } from '@components';
 import { CurrencySearchProps } from '@screens/CurrencySelect/types';
-import { View } from 'react-native';
-import { useCurrencyStore } from '@store/currencyStore';
-import { useDebounce } from '@hooks';
-
+import { useCurrencySearch } from '@screens/CurrencySelect/hooks';
 import styles from './styles';
 
 const CurrencySearch: FC<CurrencySearchProps> = ({ testID }) => {
-  const [value, setValue] = useState<string>('');
-
-  const setSearchValue = useCurrencyStore(state => state.setSearchValue);
-  const debouncedChangeValue = useDebounce((text: string) => {
-    setSearchValue(text);
-  }, 500);
-
-  const onChangeText = (text: string) => {
-    setValue(text);
-    debouncedChangeValue(text);
-  };
+  const { value, onChangeText } = useCurrencySearch();
 
   return (
     <View style={styles.container}>
