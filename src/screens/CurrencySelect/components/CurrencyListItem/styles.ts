@@ -9,12 +9,12 @@ export default StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 16,
     borderRadius: 8,
+    backgroundColor: COLORS.backgroundSecondary,
     height: Constants.Dimensions.SearchItemHeight,
   },
   active: {
     backgroundColor: COLORS.backgroundActive,
   },
-
   currency: {
     flex: 1,
     flexDirection: 'row',

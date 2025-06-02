@@ -15,7 +15,6 @@ const CurrencyListItem: FC<CurrencyItemProps> = memo(
         onPress={() => onSelect(item)}
         testID={testID}
         style={[styles.container, isActive && styles.active]}>
-
         <View style={styles.currency}>
           <Ui.Flag testID={`${testID}-img`} size={30} uri={item.flagSrc} />
           <Ui.Text>{item.code}</Ui.Text>

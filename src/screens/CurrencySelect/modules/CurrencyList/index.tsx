@@ -15,10 +15,11 @@ const CurrencyList: FC<CurrencyListProps> = ({ testID }) => {
     useCurrencyList();
 
   const renderItem = useCallback(
-    ({ item }: { item: CurrencyType }) => (
+    ({ item, index }: { item: CurrencyType; index: number }) => (
       <CurrencyListItem
         testID={`${testID}-${item.code}`}
         item={item}
+        index={index}
         onSelect={onSelect}
       />
     ),

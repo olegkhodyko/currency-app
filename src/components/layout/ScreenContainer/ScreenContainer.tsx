@@ -15,8 +15,8 @@ const ScreenContainer: FC<Props> = ({ testID, children, style, ...rest }) => {
     paddingTop: insets.top,
     paddingBottom: insets.bottom,
     paddingHorizontal: Math.max(insets.left, insets.right),
-    overflow: 'hidden',
     backgroundColor: COLORS.backgroundPrimary,
+    overflow: 'hidden',
   };
 
   return (

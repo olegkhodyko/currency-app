@@ -16,6 +16,7 @@ export interface UseCurrencyListProps {
 export interface CurrencyItemProps {
   testID: string;
   item: CurrencyType;
+  index: number;
   onSelect: (currency: CurrencyType) => void;
 }
 
