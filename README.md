@@ -1,4 +1,4 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+[`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
 
@@ -10,13 +10,9 @@ First, you will need to run **Metro**, the JavaScript build tool for React Nativ
 
 To start the Metro dev server, run the following command from the root of your React Native project:
 
-```sh
+````sh
 # Using npm
 npm start
-
-# OR using Yarn
-yarn start
-```
 
 ## Step 2: Build and run your app
 
@@ -28,10 +24,6 @@ With Metro running, open a new terminal window/pane from the root of your React 
 # Using npm
 npm run android
 
-# OR using Yarn
-yarn android
-```
-
 ### iOS
 
 For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
@@ -40,7 +32,7 @@ The first time you create a new project, run the Ruby bundler to install CocoaPo
 
 ```sh
 bundle install
-```
+````
 
 Then, and every time you update your native dependencies, run:
 
@@ -95,3 +87,5 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+Documentation is here: [docs/architecture.md](docs/architecture.md)
